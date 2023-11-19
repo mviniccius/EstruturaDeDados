@@ -95,31 +95,52 @@ class FilaEstatica{
 
 public class Fila{
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
         Scanner scanner = new Scanner(System.in);
-        
         int menu;
+        int num;
         
+        FilaEstatica minhaFila = new FilaEstatica(5);
         
-        do{
-            System.out.println("Escolha"); 
-            System.out.println("____________");
+      do {
+            System.out.println("Digite uma opção:");
+            System.out.println("1 - Opção cadastrar um elemento na fila");
+            System.out.println("2 - Imprimir conteudo da fila");
+            System.out.println("3 - Desenfileirar");
+            System.out.println("0 - Sair");
             
             menu = scanner.nextInt();
             
-            switch(menu){
-                case 0 -> {
-                }
-                           
+            switch (menu) {
+                case 0:
+                    break;
+                case 1:
+                    System.out.println("Entrou 1");
+                    System.out.println("Digite um numero inteiro para inserir na fila");
+                    num = scanner.nextInt();
+                    Inteiro valor = new Inteiro(num);
+                    valor.imprimir();
+                    minhaFila.enfileirar(valor);        
+                    break;
+                    
+                case 2:
+                    minhaFila.imprimir();
+                    break;
                 
-                case 1 -> System.out.println("Entrou 1");
-                default -> System.out.println("Opcao ivalida");
-        }
+                case 3:
+                    
+                    valor = minhaFila.desenfileirar();
+                    valor.imprimir();
+                    break;
+                    
+                default:
+                    System.out.println("Opção inválida");
+            }
             
-        }while(menu != 0);
+           // System.out.println("Você digitou: " + menu);
+        } while (menu != 0);
         
-        System.out.println("saiu");
-        
+        scanner.close();
     }
 }
